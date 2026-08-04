@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kegiatan & Praktikum - TJKT SMKN 1 Klaten</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CORE STYLES & VARIABLES --- */
+        :root {
+            --bg-dark: #07090e;
+            --bg-card: rgba(18, 24, 38, 0.6);
+            --primary: #00f2fe;
+            --primary-glow: rgba(0, 242, 254, 0.15);
+            --secondary: #4facfe;
+            --accent: #7f00ff;
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(0, 242, 254, 0.3);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(127, 0, 255, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.1) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            background: rgba(7, 9, 14, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* --- PAGE HEADER MONO --- */
+        .page-header {
+            text-align: center;
+            padding: 3.5rem 8% 2rem 8%;
+        }
+
+        .page-header h1 {
+            font-family: var(--font-mono);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- MAIN DASHBOARD LAYOUT --- */
+        .section {
+            padding: 1rem 8% 5rem 8%;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr 280px;
+            gap: 1.5rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* --- CARD & WIDGET STYLES --- */
+        .widget-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 18px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .widget-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .widget-title i {
+            color: var(--primary);
+        }
+
+        /* STATUS LIST WIDGET */
+        .status-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .status-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .badge-status {
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+        }
+
+        .badge-status.ready { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+        .badge-status.inuse { background: rgba(0, 242, 254, 0.15); color: var(--primary); }
+        .badge-status.maint { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+
+        /* MAIN TASKS GRID */
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .task-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 18px;
+            padding: 1.5rem;
+            backdrop-filter: blur(16px);
+            transition: all 0.3s ease;
+        }
+
+        .task-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .task-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .task-header i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .task-header h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .task-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+        }
+
+        .tag-praktikum {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            background: rgba(0, 242, 254, 0.08);
+            color: var(--primary);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            text-transform: uppercase;
+        }
+
+        /* ALUR PRAKTIKUM SECTION */
+        .flow-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 18px;
+            padding: 1.5rem;
+        }
+
+        .flow-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .flow-step {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            padding: 1.2rem;
+        }
+
+        .step-num {
+            display: inline-block;
+            background: rgba(0, 242, 254, 0.15);
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+        }
+
+        .flow-step h4 {
+            font-size: 0.95rem;
+            color: #fff;
+            margin-bottom: 0.4rem;
+        }
+
+        .flow-step p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* RIGHT SIDEBAR WIDGETS */
+        .progress-bar-container {
+            margin-bottom: 1rem;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            margin-bottom: 0.4rem;
+            color: var(--text-muted);
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 10px;
+        }
+
+        .agenda-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .agenda-item:last-child {
+            border-bottom: none;
+        }
+
+        .agenda-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+
+        .agenda-date {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 2.5rem 8%;
+            border-top: 1px solid var(--border-light);
+            background: rgba(7, 9, 14, 0.9);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .tasks-grid, .flow-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGASI UTAMA -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-network-wired"></i></div>
+            Edukasi <span>TJKT</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a></li>
+                <li><a href="profil.html"><i class="fa-solid fa-user"></i> Profil</a></li>
+                <li><a href="kegiatan.html" class="active"><i class="fa-solid fa-list-check"></i> Kegiatan</a></li>
+                <li><a href="galeri.html"><i class="fa-solid fa-images"></i> Galeri</a></li>
+                <li><a href="kontak.html"><i class="fa-solid fa-envelope"></i> Kontak</a></li>
+                <li><a href="tautan.html"><i class="fa-solid fa-link"></i> Tautan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HEADER MONO TITLE -->
+    <div class="page-header">
+        <h1>[ TASKS_&_ACTIVITIES ]</h1>
+    </div>
+
+    <!-- MAIN DASHBOARD -->
+    <section class="section">
+        <div class="dashboard-grid">
+            
+            <!-- LEFT COLUMN: STATUS LAB & INVENTARIS -->
+            <div class="col-left">
+                <div class="widget-card">
+                    <div class="widget-title">
+                        <i class="fa-solid fa-flask"></i> Status Lab
+                    </div>
+                    <div class="status-list">
+                        <div class="status-item">
+                            <span>Lab Jaringan 1</span>
+                            <span class="badge-status ready">READY</span>
+                        </div>
+                        <div class="status-item">
+                            <span>Lab Server</span>
+                            <span class="badge-status inuse">IN USE</span>
+                        </div>
+                        <div class="status-item">
+                            <span>Lab Fiber Optic</span>
+                            <span class="badge-status maint">MAINTENANCE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget-card">
+                    <div class="widget-title">
+                        <i class="fa-solid fa-microchip"></i> Peralatan Utama
+                    </div>
+                    <div class="status-list">
+                        <div class="status-item">
+                            <span>Fusion Splicer</span>
+                            <strong>15 Set</strong>
+                        </div>
+                        <div class="status-item">
+                            <span>OTDR Tester</span>
+                            <strong>4 Unit</strong>
+                        </div>
+                        <div class="status-item">
+                            <span>Router MikroTik</span>
+                            <strong>28 Unit</strong>
+                        </div>
+                        <div class="status-item">
+                            <span>Switch Managed</span>
+                            <strong>15 Unit</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CENTER COLUMN: DAFTAR PRAKTIKUM & ALUR -->
+            <div class="col-center">
+                <!-- GRID MODUL PRAKTIKUM -->
+                <div class="tasks-grid">
+                    
+                    <!-- Card 1 -->
+                    <div class="task-card">
+                        <div class="task-header">
+                            <i class="fa-solid fa-ethernet"></i>
+                            <h3>Perakitan Kabel</h3>
+                        </div>
+                        <p>Praktikum pembuatan kabel LAN menggunakan UTP Cat6, konektor RJ-45, serta pengujian menggunakan LAN Tester.</p>
+                        <span class="tag-praktikum"><i class="fa-solid fa-wrench"></i> Praktikum Fisik</span>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="task-card">
+                        <div class="task-header">
+                            <i class="fa-solid fa-bolt"></i>
+                            <h3>Splicing Fiber</h3>
+                        </div>
+                        <p>Latihan penyambungan serat optik menggunakan Fusion Splicer dan pengukuran redaman sinyal dengan OTDR/OPM.</p>
+                        <span class="tag-praktikum"><i class="fa-solid fa-wrench"></i> Praktikum Fisik</span>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="task-card">
+                        <div class="task-header">
+                            <i class="fa-solid fa-sliders"></i>
+                            <h3>Config Router</h3>
+                        </div>
+                        <p>Simulasi dan praktikum langsung pengaturan routing dasar, IP Address, DHCP Server, serta Firewall menggunakan MikroTik.</p>
+                        <span class="tag-praktikum"><i class="fa-solid fa-network-wired"></i> Jaringan</span>
+                    </div>
+
+                </div>
+
+                <!-- ALUR PELAKSANAAN PRAKTIKUM -->
+                <div class="flow-section">
+                    <div class="widget-title">
+                        <i class="fa-solid fa-route"></i> Alur Pelaksanaan Praktikum
+                    </div>
+                    <div class="flow-grid">
+                        
+                        <div class="flow-step">
+                            <span class="step-num">01</span>
+                            <h4>Pemahaman Teori</h4>
+                            <p>Mempelajari konsep dasar arsitektur & K3LH laboratorium.</p>
+                        </div>
+
+                        <div class="flow-step">
+                            <span class="step-num">02</span>
+                            <h4>Persiapan Alat</h4>
+                            <p>Mengecek kelengkapan toolkits, kabel, & perangkat jaringan.</p>
+                        </div>
+
+                        <div class="flow-step">
+                            <span class="step-num">03</span>
+                            <h4>Eksekusi Praktikum</h4>
+                            <p>Melakukan perakitan, konfigurasi, & pengujian jaringan.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: PROGRES & AGENDA UJI -->
+            <div class="col-right">
+                <div class="widget-card">
+                    <div class="widget-title">
+                        <i class="fa-solid fa-chart-line"></i> Progres Kurikulum
+                    </div>
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-info">
+                            <span>Jaringan Dasar</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-bar-container">
+                        <div class="progress-info">
+                            <span>Serat Optik</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-bar-container">
+                        <div class="progress-info">
+                            <span>Administrasi Server</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget-card">
+                    <div class="widget-title">
+                        <i class="fa-solid fa-calendar-days"></i> Agenda Uji Kompetensi
+                    </div>
+                    <div class="agenda-item">
+                        <div class="agenda-title">UKK Kabel UTP & Fiber Optic</div>
+                        <div class="agenda-date"><i class="fa-regular fa-clock"></i> Agustus 2026</div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="agenda-title">Sertifikasi MikroTik MTCNA</div>
+                        <div class="agenda-date"><i class="fa-regular fa-clock"></i> September 2026</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Edukasi TJKT SMKN 1 Klaten. Hak Cipta Dilindungi.</p>
+    </footer>
+
+</body>
+</html>

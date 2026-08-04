@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Edukasi TJKT</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CORE STYLES & VARIABLES --- */
+        :root {
+            --bg-dark: #07090e;
+            --bg-card: rgba(18, 24, 38, 0.6);
+            --primary: #00f2fe;
+            --primary-glow: rgba(0, 242, 254, 0.15);
+            --secondary: #4facfe;
+            --accent: #7f00ff;
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(0, 242, 254, 0.3);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(127, 0, 255, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.1) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            background: rgba(7, 9, 14, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* --- PAGE HEADER --- */
+        .page-header {
+            text-align: center;
+            padding: 4.5rem 8% 2rem 8%;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            background: rgba(0, 242, 254, 0.06);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            letter-spacing: -1px;
+            color: #ffffff;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* --- SECTION & GRID --- */
+        .section {
+            padding: 2rem 8% 6rem 8%;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        /* --- CONTENT BOX --- */
+        .content-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 2.5rem;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .content-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0.7;
+        }
+
+        .content-box:hover {
+            border-color: var(--border-hover);
+            background: rgba(22, 30, 48, 0.8);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-box h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            letter-spacing: -0.3px;
+        }
+
+        .content-box h2 i {
+            color: var(--primary);
+        }
+
+        .content-box h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 1.2rem 0 0.5rem 0;
+        }
+
+        .content-box p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.96rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-box ul {
+            list-style: none;
+        }
+
+        .content-box ul li {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .content-box ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* --- CURRICULUM & CARDS SECTION --- */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin: 4rem 0 2.5rem 0;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 2.2rem;
+            border-radius: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            background: rgba(22, 30, 48, 0.8);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid rgba(0, 242, 254, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.3px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        /* --- PARTNERSHIP & BADGES LIST --- */
+        .cert-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cert-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-light);
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cert-item i {
+            color: var(--primary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 2.5rem 8%;
+            border-top: 1px solid var(--border-light);
+            background: rgba(7, 9, 14, 0.9);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 5%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: rgba(7, 9, 14, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 1.5rem 5%;
+                border-bottom: 1px solid var(--border-light);
+            }
+
+            nav.show {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGASI UTAMA -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-network-wired"></i></div>
+            Edukasi <span>TJKT</span>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a></li>
+                <li><a href="profil.html" class="active"><i class="fa-solid fa-user"></i> Profil</a></li>
+                <li><a href="kegiatan.html"><i class="fa-solid fa-list-check"></i> Kegiatan</a></li>
+                <li><a href="galeri.html"><i class="fa-solid fa-images"></i> Galeri</a></li>
+                <li><a href="kontak.html"><i class="fa-solid fa-envelope"></i> Kontak</a></li>
+                <li><a href="tautan.html"><i class="fa-solid fa-link"></i> Tautan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <div class="badge">
+            <i class="fa-solid fa-graduation-cap"></i> Program Keahlian
+        </div>
+        <h1>Profil Jurusan TJKT</h1>
+        <p>Mengenal lebih dekat Program Keahlian Teknik Jaringan Komputer dan Telekomunikasi</p>
+    </div>
+
+    <!-- MAIN CONTENT SECTION -->
+    <section class="section">
+        <div class="container">
+            
+            <!-- GAMBARAN UMUM & VISI MISI -->
+            <div class="grid-2">
+                <div class="content-box">
+                    <h2><i class="fa-solid fa-circle-info"></i> Apa itu TJKT?</h2>
+                    <p>Teknik Jaringan Komputer dan Telekomunikasi (TJKT) merupakan bidang keahlian yang berfokus pada penguasaan teknologi informasi, sistem komputer, arsitektur jaringan, serta infrastruktur telekomunikasi modern.</p>
+                    <p>Siswa dibekali dengan keterampilan teoritis dan praktis agar mampu merancang, mengonfigurasi, dan merawat jaringan skala lokal (LAN) maupun luas (WAN).</p>
+                </div>
+
+                <div class="content-box">
+                    <h2><i class="fa-solid fa-bullseye"></i> Visi & Misi</h2>
+                    <h3>Visi:</h3>
+                    <p>Menjadi pusat edukasi dan pelatihan TJKT yang unggul, adaptif terhadap perkembangan teknologi, dan berstandar industri.</p>
+                    <h3>Misi:</h3>
+                    <ul>
+                        <li>Menyelenggarakan pembelajaran berbasis praktik dan sertifikasi keahlian.</li>
+                        <li>Membangun pemahaman komprehensif terkait jaringan nirkabel, fiber optik, dan administrasi server.</li>
+                        <li>Menyiapkan tenaga terampil di bidang jaringan komputer dan jaringan telekomunikasi.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- KURIKULUM & MATERI UTAMA -->
+            <div class="curriculum-box">
+                <h2 class="section-title">Materi Pembelajaran Utama</h2>
+                <div class="card-grid">
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3>1. Dasar-Dasar TJKT</h3>
+                        <p>K3LH, Perakitan Komputer, Pengenalan Komponen Jaringan, dan Pemrosesan Sinyal Dasar.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h3>2. Jaringan Komputer</h3>
+                        <p>Model OSI, Protokol TCP/IP, IPv4 & IPv6 Subnetting, Switching, dan Routing Dasar.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <h3>3. Administrasi Server</h3>
+                        <p>Sistem Operasi Linux/Windows Server, DHCP, DNS, Web Server, dan Keamanan Jaringan.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-tower-cell"></i>
+                        </div>
+                        <h3>4. Telekomunikasi & FO</h3>
+                        <p>Transmisi Fiber Optic, Splicing, OTDR, Wireless LAN, dan Teknologi Seluler (4G/5G).</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- PROSPEK KARIR & PROFIL LULUSAN -->
+            <div>
+                <h2 class="section-title">Peluang Karir & Lulusan</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-user-gear"></i>
+                        </div>
+                        <h3>Network Engineer</h3>
+                        <p>Merancang, mengonfigurasi, dan mengelola infrastruktur jaringan komputer perusahaan secara profesional.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-terminal"></i>
+                        </div>
+                        <h3>System Administrator</h3>
+                        <p>Mengelola server Linux/Windows, mengurus *backup*, database, serta menjaga uptime layanan cloud/lokal.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-cable-car"></i>
+                        </div>
+                        <h3>Teknisi Fiber Optic</h3>
+                        <p>Melakukan penyambungan (*splicing*), pengukuran kualitas sinyal kabel optik, dan pemeliharaan jalur FTTH.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3>IT Support & Cyber Sec</h3>
+                        <p>Memberikan dukungan teknis perangkat IT, menangani *troubleshooting*, serta menjaga keamanan sistem dasar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FASILITAS & SERTIFIKASI (GRID 2) -->
+            <div class="grid-2" style="margin-top: 4rem; margin-bottom: 0;">
+                <div class="content-box">
+                    <h2><i class="fa-solid fa-building-user"></i> Fasilitas Pendukung</h2>
+                    <ul>
+                        <li>Laboratorium Jaringan Komputer & Cisco/Mikrotik.</li>
+                        <li>Laboratorium Server & Cyber Security terkonfigurasi.</li>
+                        <li>Peralatan Praktikum Fiber Optic (Fusion Splicer & OTDR).</li>
+                        <li>Akses Internet Dedicated High-Speed untuk praktikum.</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h2><i class="fa-solid fa-award"></i> Sertifikasi & Kemitraan</h2>
+                    <p>Siswa dibekali kurikulum yang diselaraskan dengan standar sertifikasi industri nasional maupun internasional:</p>
+                    <div class="cert-list">
+                        <div class="cert-item"><i class="fa-solid fa-certificate"></i> Cisco CCNA Standard</div>
+                        <div class="cert-item"><i class="fa-solid fa-certificate"></i> Mikrotik MTCNA</div>
+                        <div class="cert-item"><i class="fa-solid fa-certificate"></i> Sertifikasi LSP / BNSP</div>
+                        <div class="cert-item"><i class="fa-solid fa-handshake"></i> Mitratel / Telkom DUDI</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Edukasi TJKT. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <!-- JAVASCRIPT UNTUK TOGGLE MENU MOBILE -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+    </script>
+
+</body>
+</html>

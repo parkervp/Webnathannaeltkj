@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri - Edukasi Dasar TJKT</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CORE STYLES & VARIABLES --- */
+        :root {
+            --bg-dark: #07090e;
+            --bg-card: rgba(18, 24, 38, 0.6);
+            --primary: #00f2fe;
+            --primary-glow: rgba(0, 242, 254, 0.15);
+            --secondary: #4facfe;
+            --accent: #7f00ff;
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(0, 242, 254, 0.3);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(127, 0, 255, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.1) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            background: rgba(7, 9, 14, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* --- PAGE HEADER --- */
+        .page-header {
+            text-align: center;
+            padding: 4.5rem 8% 2rem 8%;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            background: rgba(0, 242, 254, 0.06);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            letter-spacing: -1px;
+            color: #ffffff;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 620px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* --- GALLERY FILTER TABS --- */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 2.5rem 0 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            color: var(--text-muted);
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+        }
+
+        /* --- GALLERY GRID & CARDS --- */
+        .section {
+            padding: 2rem 8% 6rem 8%;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            overflow: hidden;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-card.hide {
+            display: none !important;
+        }
+
+        .gallery-card:hover, .gallery-card:focus {
+            border-color: var(--border-hover);
+            background: rgba(22, 30, 48, 0.8);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            outline: none;
+        }
+
+        .img-container {
+            width: 100%;
+            height: 230px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* BADGES */
+        .card-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(7, 9, 14, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card-badge.hardware {
+            border-color: rgba(245, 158, 11, 0.4);
+            color: #fbbf24;
+        }
+
+        .card-badge.sysadmin {
+            border-color: rgba(127, 0, 255, 0.4);
+            color: #c084fc;
+        }
+
+        .gallery-caption {
+            padding: 1.6rem;
+        }
+
+        .gallery-caption h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.3px;
+        }
+
+        .gallery-caption p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        /* --- LIGHTBOX MODAL --- */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(5, 7, 12, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lightbox-content {
+            background: rgba(18, 24, 38, 0.95);
+            border: 1px solid var(--border-hover);
+            padding: 1.8rem;
+            border-radius: 24px;
+            max-width: 720px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .lightbox.active .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 1.2rem;
+        }
+
+        .lightbox-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .lightbox-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .close-lightbox:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 2.5rem 8%;
+            border-top: 1px solid var(--border-light);
+            background: rgba(7, 9, 14, 0.9);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGASI / MENU UTAMA -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-network-wired"></i></div>
+            Edukasi <span>TJKT</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a></li>
+                <li><a href="profil.html"><i class="fa-solid fa-user"></i> Profil</a></li>
+                <li><a href="kegiatan.html"><i class="fa-solid fa-list-check"></i> Kegiatan</a></li>
+                <li><a href="galeri.html" class="active"><i class="fa-solid fa-images"></i> Galeri</a></li>
+                <li><a href="kontak.html"><i class="fa-solid fa-envelope"></i> Kontak</a></li>
+                <li><a href="tautan.html"><i class="fa-solid fa-link"></i> Tautan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <div class="badge">
+            <i class="fa-solid fa-images"></i> Dokumentasi Praktikum
+        </div>
+        <h1>Galeri Pembelajaran</h1>
+        <p>Dokumentasi aktivitas praktikum, konfigurasi perangkat jaringan, dan fasilitas Laboratorium TJKT.</p>
+
+        <!-- CATEGORY FILTER -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-layer-group"></i> Semua</button>
+            <button class="filter-btn" data-filter="network"><i class="fa-solid fa-network-wired"></i> Jaringan</button>
+            <button class="filter-btn" data-filter="hardware"><i class="fa-solid fa-microchip"></i> Hardware</button>
+            <button class="filter-btn" data-filter="sysadmin"><i class="fa-solid fa-server"></i> SysAdmin</button>
+        </div>
+    </div>
+
+    <!-- GALLERY SECTION -->
+    <section class="section">
+        <div class="container">
+            <div class="gallery-grid">
+                
+                <!-- Gallery Card 1 -->
+                <div class="gallery-card" data-category="network" tabindex="0">
+                    <div class="img-container">
+                        <span class="card-badge"><i class="fa-solid fa-network-wired"></i> Jaringan</span>
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80" alt="Server Rack & Cable Management">
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Manajemen Kabel & Server Rack</h4>
+                        <p>Praktik penataan kabel patch cord pada patch panel dan switch gigabit.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 2 -->
+                <div class="gallery-card" data-category="network" tabindex="0">
+                    <div class="img-container">
+                        <span class="card-badge"><i class="fa-solid fa-network-wired"></i> Jaringan</span>
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" alt="Infrastruktur Jaringan">
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Infrastruktur Network Router</h4>
+                        <p>Konfigurasi routing dinamis, VLAN, dan manajemen bandwidth pada MikroTik.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 3 -->
+                <div class="gallery-card" data-category="hardware" tabindex="0">
+                    <div class="img-container">
+                        <span class="card-badge hardware"><i class="fa-solid fa-microchip"></i> Hardware</span>
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="Praktikum Hardware Komputer">
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Praktikum Hardware & PC Assembly</h4>
+                        <p>Perakitan unit komputer, pengujian komponen BIOS, dan instalasi sistem pendingin.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 4 -->
+                <div class="gallery-card" data-category="sysadmin" tabindex="0">
+                    <div class="img-container">
+                        <span class="card-badge sysadmin"><i class="fa-solid fa-server"></i> SysAdmin</span>
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Laboratorium Jaringan">
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Laboratorium Komputer & Server</h4>
+                        <p>Suasana pembelajaran administrasi sistem jaringan Linux Debian dan Web Server.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL FOR FULLSCREEN PREVIEW -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="close-lightbox" id="closeBtn">&times;</span>
+            <img id="lightboxImg" src="" alt="Preview">
+            <h3 id="lightboxTitle"></h3>
+            <p id="lightboxDesc"></p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Edukasi TJKT. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPT (LIGHTBOX & FILTER) -->
+    <script>
+        const cards = document.querySelectorAll('.gallery-card');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxDesc = document.getElementById('lightboxDesc');
+        const closeBtn = document.getElementById('closeBtn');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        // Functions to control Lightbox
+        function openLightbox(card) {
+            const img = card.querySelector('img').src;
+            const title = card.querySelector('h4').innerText;
+            const desc = card.querySelector('p').innerText;
+
+            lightboxImg.src = img;
+            lightboxTitle.innerText = title;
+            lightboxDesc.innerText = desc;
+            lightbox.classList.add('active');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeLightboxModal() {
+            lightbox.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        }
+
+        // Open Lightbox on Card Click or Enter Key
+        cards.forEach(card => {
+            card.addEventListener('click', () => openLightbox(card));
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') openLightbox(card);
+            });
+        });
+
+        // Close Lightbox Triggers
+        closeBtn.addEventListener('click', closeLightboxModal);
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightboxModal();
+            }
+        });
+
+        // Close Lightbox with Escape Key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightboxModal();
+            }
+        });
+
+        // Category Filter Handler
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                cards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filterValue === 'all' || category === filterValue) {
+                        card.classList.remove('hide');
+                    } else {
+                        card.classList.add('hide');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

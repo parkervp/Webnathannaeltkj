@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TJKT KEN - Pusat Edukasi & Belajar Jaringan Komputer</title>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CORE STYLES & VARIABLES --- */
+        :root {
+            --bg-dark: #07090e;
+            --bg-card: rgba(18, 24, 38, 0.6);
+            --primary: #00f2fe;
+            --primary-glow: rgba(0, 242, 254, 0.15);
+            --secondary: #4facfe;
+            --accent: #7f00ff;
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(0, 242, 254, 0.3);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(127, 0, 255, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 60%, rgba(0, 242, 254, 0.1) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            background: rgba(7, 9, 14, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 8% 3rem 8%;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 880px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            background: rgba(0, 242, 254, 0.06);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.8rem;
+        }
+
+        .hero h1 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            color: #ffffff;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, #ffffff 30%, var(--primary) 70%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.95rem 2.2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.25);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 28px rgba(127, 0, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* --- STATS COUNTER BAR --- */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto 5rem auto;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+        }
+
+        .stat-item { text-align: center; }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.2rem;
+            background: linear-gradient(135deg, var(--primary), #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* --- FEATURE SECTION & CARDS --- */
+        .section {
+            padding: 3rem 8% 5rem 8%;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            padding: 2.5rem 2rem;
+            border-radius: 24px;
+            backdrop-filter: blur(16px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+            background: rgba(22, 30, 48, 0.8);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card:hover::before { opacity: 1; }
+
+        .card-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            background: var(--primary-glow);
+            border: 1px solid rgba(0, 242, 254, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            border-color: transparent;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.65;
+            font-size: 0.95rem;
+        }
+
+        /* --- ROADMAP / ALUR PEMBELAJARAN --- */
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 18px;
+            padding: 1.8rem;
+            position: relative;
+        }
+
+        .step-number {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--primary-glow);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* --- FAQ SECTION --- */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-hover);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 0.8rem;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border-light);
+            background: rgba(7, 9, 14, 0.95);
+            padding: 4rem 8% 2rem 8%;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            margin-top: 1rem;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .footer-col a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 5%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: rgba(7, 9, 14, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 1.5rem 5%;
+                border-bottom: 1px solid var(--border-light);
+            }
+
+            nav.show {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            .hero h1 { font-size: 2.3rem; }
+            .hero-buttons { flex-direction: column; }
+            .stats-bar { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGASI / MENU UTAMA -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-network-wired"></i></div>
+            Lab <span>Network</span>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Beranda</a></li>
+                <li><a href="profil.html"><i class="fa-solid fa-user"></i> Profil</a></li>
+                <li><a href="kegiatan.html"><i class="fa-solid fa-list-check"></i> Kegiatan</a></li>
+                <li><a href="galeri.html"><i class="fa-solid fa-images"></i> Galeri</a></li>
+                <li><a href="kontak.html"><i class="fa-solid fa-envelope"></i> Kontak</a></li>
+                <li><a href="tautan.html"><i class="fa-solid fa-link"></i> Tautan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO BERANDA -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">
+                <i class="fa-solid fa-sparkles"></i> Portal Pembelajaran Kurikulum Terbaru
+            </div>
+            <h1>
+                Kuasai Jaringan & Infrastruktur Digital Bersama <span class="gradient-text">Lab Network</span>
+            </h1>
+            <p>
+                Platform edukasi terstruktur untuk mempelajari Dasar Teknik Jaringan Komputer, Telekomunikasi, Administrasi Server, hingga Sistem Siber modern secara praktis.
+            </p>
+            <div class="hero-buttons">
+                <a href="profil.html" class="btn btn-primary">
+                    <i class="fa-solid fa-graduation-cap"></i> Pelajari Profil TJKT
+                </a>
+                <a href="kegiatan.html" class="btn btn-secondary">
+                    <i class="fa-solid fa-list-check"></i> Lihat Kegiatan
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATISTIK RINGKAS -->
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">4+</div>
+                <div class="stat-label">Pilar Kompetensi Utama</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Praktik Berbasis Industri</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">IPv4 / IPv6</div>
+                <div class="stat-label">Standar Arsitektur Jaringan</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">Fiber Optic</div>
+                <div class="stat-label">Teknologi Transmisi Modern</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RINGKASAN FITUR / MATERI -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mengapa Belajar TJKT?</h2>
+                <p class="section-subtitle">Membangun fondasi kuat untuk karier di bidang Network Engineer, System Administrator, dan IT Support.</p>
+            </div>
+            
+            <div class="card-grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3>Perakitan & Hardware</h3>
+                    <p>Memahami arsitektur komputer, komponen utama PC/Server, K3LH, serta teknik troubleshooting perangkat keras secara presisi.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-diagram-project"></i>
+                    </div>
+                    <h3>Jaringan & Routing</h3>
+                    <p>Konfigurasi IP Address, Subnetting VLSM, Switching, Router MikroTik & Cisco, hingga pengelolaan trafik data LAN/WAN.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-tower-cell"></i>
+                    </div>
+                    <h3>Telekomunikasi & Fiber</h3>
+                    <p>Pengenalan media transmisi nirkabel, sistem gelombang radio, dan teknik penyambungan kabel Fiber Optic (Splicing).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAHAPAN / ROADMAP BELAJAR -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Alur Pembelajaran TJKT</h2>
+                <p class="section-subtitle">Peta jalan kompetensi dari tingkat dasar hingga keahlian profesional.</p>
+            </div>
+
+            <div class="roadmap-grid">
+                <div class="step-card">
+                    <span class="step-number">TAHAP 01</span>
+                    <h3>Dasar Komputer & K3LH</h3>
+                    <p>Pengenalan komponen hardware, instalasi sistem operasi, dan pemahaman K3LH di laboratorium IT.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">TAHAP 02</span>
+                    <h3>Jaringan Dasar & Kabel</h3>
+                    <p>Praktik perakitan kabel UTP/STP (crimping RJ45), pengenalan topologi, serta konsep dasar TCP/IP.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">TAHAP 03</span>
+                    <h3>Administrasi & Routing</h3>
+                    <p>Konfigurasi router/switch, manajemen bandwidth, penyambungan Fiber Optic, dan pengelolaan server.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Sering Ditanyakan</h2>
+                <p class="section-subtitle">Pertanyaan umum seputar jurusan Teknik Jaringan Komputer & Telekomunikasi.</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apa itu Jurusan TJKT?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        TJKT (Teknik Jaringan Komputer dan Telekomunikasi) adalah program keahlian yang fokus pada penguasaan teknologi jaringan, infrastruktur internet, administrasi server, dan sistem telekomunikasi.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Prospek kerja apa saja yang bisa diraih?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Lulusan TJKT dapat berkarier sebagai Network Engineer, Network Administrator, System Administrator, IT Support Specialist, Technician Fiber Optic, hingga Cyber Security Analyst.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        Edukasi <span>TJKT</span>
+                    </div>
+                    <p>Portal edukasi interaktif untuk mempelajari ilmu Teknik Jaringan Komputer & Telekomunikasi.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="profil.html">Profil</a></li>
+                        <li><a href="kegiatan.html">Kegiatan</a></li>
+                        <li><a href="galeri.html">Galeri</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Halaman Lain</h4>
+                    <ul>
+                        <li><a href="tautan.html">Tautan Belajar</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Edukasi TJKT. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT UNTUK INTERAKSI MENU & FAQ -->
+    <script>
+        // Toggle Navigasi Mobile
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        // Toggle FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+
+</body>
+</html>

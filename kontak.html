@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Informasi TJKT - Informasi & Kontak</title>
+    <!-- Google Fonts: Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -23,13 +27,13 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
-            padding: 2.5rem 1.5rem;
+            padding: 1.5rem 1rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -44,7 +48,7 @@
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1.1fr;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: stretch;
         }
 
@@ -53,7 +57,7 @@
             border: 1px solid var(--border-light);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            padding: 2rem;
+            padding: 1.75rem;
             border-radius: 20px;
             display: flex;
             flex-direction: column;
@@ -62,17 +66,17 @@
             position: relative;
         }
 
-        /* HEADER & MENU TITIK TIGA (ACTION MENU) */
+        /* HEADER & ACTION MENU */
         .card-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             margin-bottom: 0.5rem;
             position: relative;
         }
 
         .card-title h2 {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: #fff;
             display: flex;
@@ -144,27 +148,28 @@
 
         .card-subtitle {
             color: var(--text-muted);
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             line-height: 1.5;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         /* INFO LIST */
         .info-list {
             display: flex;
             flex-direction: column;
-            gap: 0.85rem;
+            gap: 0.75rem;
         }
 
         .info-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.85rem;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--border-light);
-            padding: 0.85rem 1rem;
+            padding: 0.75rem 0.9rem;
             border-radius: 14px;
             transition: all 0.3s ease;
+            word-break: break-word;
         }
 
         .info-item:hover {
@@ -173,8 +178,8 @@
         }
 
         .info-icon {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: 10px;
             background: rgba(0, 242, 254, 0.08);
             border: 1px solid rgba(0, 242, 254, 0.2);
@@ -182,14 +187,14 @@
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             flex-shrink: 0;
         }
 
         .info-text strong {
             display: block;
             color: #fff;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 0.15rem;
@@ -197,7 +202,7 @@
 
         .info-text p, .info-text a {
             color: var(--text-muted);
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             text-decoration: none;
             line-height: 1.3;
         }
@@ -210,17 +215,17 @@
         .contact-form {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.85rem;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 0.4rem;
+            gap: 0.35rem;
         }
 
         .form-group label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-main);
         }
@@ -231,17 +236,22 @@
             width: 100%;
             background: var(--input-bg);
             border: 1px solid var(--border-light);
-            padding: 0.8rem 1rem;
+            padding: 0.75rem 0.9rem;
             border-radius: 10px;
             color: #fff;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             outline: none;
             transition: all 0.3s ease;
         }
 
+        .form-group select option {
+            background-color: #0b0f19;
+            color: #fff;
+        }
+
         .form-group textarea {
             resize: vertical;
-            min-height: 95px;
+            min-height: 85px;
         }
 
         .form-group input:focus,
@@ -259,14 +269,15 @@
             padding: 0.85rem 1.5rem;
             border-radius: 10px;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             transition: all 0.3s ease;
-            margin-top: 0.4rem;
+            margin-top: 0.25rem;
+            width: 100%;
         }
 
         .btn-submit:hover {
@@ -277,13 +288,13 @@
 
         /* SOCIAL MEDIA SECTION */
         .social-section {
-            margin-top: 1.2rem;
+            margin-top: 1.25rem;
             padding-top: 1rem;
             border-top: 1px solid var(--border-light);
         }
 
         .social-title {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -294,7 +305,7 @@
         .social-icons {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 0.6rem;
+            gap: 0.5rem;
         }
 
         .social-btn {
@@ -306,7 +317,7 @@
             align-items: center;
             justify-content: center;
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-decoration: none;
             transition: all 0.25s ease;
         }
@@ -317,10 +328,28 @@
             color: var(--primary);
         }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 868px) {
+        /* RESPONSIVE DESIGN FOR MOBILE */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.75rem;
+            }
+
             .grid-2 {
                 grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .card-container {
+                padding: 1.25rem;
+                border-radius: 16px;
+            }
+
+            .card-title h2 {
+                font-size: 1.1rem;
+            }
+
+            .social-icons {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
@@ -329,14 +358,13 @@
 
 <div class="container">
     <div class="grid-2">
-        <!-- Sekretariat Info Card -->
+        <!-- Informasi Kontak Card -->
         <div class="card-container">
             <div>
                 <div class="card-header">
                     <div class="card-title">
                         <h2><i class="fa-solid fa-address-card" style="color: var(--primary);"></i> Informasi Sekretariat</h2>
                     </div>
-                    <!-- MENU TITIK TIGA -->
                     <div class="action-menu">
                         <button class="dots-btn" onclick="toggleMenu('menu1')" title="Opsi Kontak"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                         <div id="menu1" class="dropdown-menu">
@@ -400,7 +428,6 @@
                 </div>
             </div>
 
-            <!-- Social Media Section -->
             <div class="social-section">
                 <div class="social-title">Media Sosial & Komunitas</div>
                 <div class="social-icons">
@@ -414,14 +441,13 @@
             </div>
         </div>
 
-        <!-- Contact Form Container -->
+        <!-- Form Kirim Pesan Card -->
         <div class="card-container">
             <div>
                 <div class="card-header">
                     <div class="card-title">
                         <h2><i class="fa-solid fa-paper-plane" style="color: var(--primary);"></i> Kirim Pesan</h2>
                     </div>
-                    <!-- MENU TITIK TIGA -->
                     <div class="action-menu">
                         <button class="dots-btn" onclick="toggleMenu('menu2')" title="Opsi Form"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                         <div id="menu2" class="dropdown-menu">
@@ -475,7 +501,6 @@
 </div>
 
 <script>
-    // Toggle Menu Dropdown Titik Tiga
     function toggleMenu(menuId) {
         event.stopPropagation();
         var menu = document.getElementById(menuId);
@@ -488,13 +513,11 @@
         menu.classList.toggle('active');
     }
 
-    // Reset Form Action
     function resetForm() {
         document.getElementById('pesanForm').reset();
         alert('Formulir berhasil di-reset!');
     }
 
-    // Tutup menu saat klik di luar
     window.onclick = function() {
         var allMenus = document.querySelectorAll('.dropdown-menu');
         allMenus.forEach(function(m) {

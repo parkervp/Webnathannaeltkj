@@ -58,7 +58,7 @@
             border-bottom: 1px solid var(--border-light);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .logo {
@@ -121,6 +121,17 @@
             height: 2px;
             background: linear-gradient(90deg, var(--primary), var(--accent));
             border-radius: 2px;
+        }
+
+        /* Hamburger Menu Icon */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
         }
 
         /* --- PAGE HEADER --- */
@@ -605,6 +616,7 @@
             font-size: 0.9rem;
         }
 
+        /* --- RESPONSIVE MEDIA QUERIES --- */
         @media (max-width: 900px) {
             .grid-2 {
                 grid-template-columns: 1fr;
@@ -613,9 +625,38 @@
 
         @media (max-width: 768px) {
             header {
+                padding: 1rem 5%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(7, 9, 14, 0.95);
+                backdrop-filter: blur(20px);
+                border-bottom: 1px solid var(--border-light);
+                padding: 1.5rem 5%;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
                 flex-direction: column;
                 gap: 1.2rem;
             }
+
+            nav a.active::after {
+                display: none;
+            }
+
             .page-header h1 {
                 font-size: 2.2rem;
             }
@@ -629,7 +670,12 @@
             <div class="logo-icon"><i class="fa-solid fa-network-wired"></i></div>
             Edukasi <span>TJKT</span>
         </div>
-        <nav>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav id="navMenu">
             <ul>
                 <li><a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a></li>
                 <li><a href="profil.html"><i class="fa-solid fa-user"></i> Profil</a></li>
@@ -839,6 +885,23 @@
     </footer>
 
     <script>
+        // Toggle Mobile Menu Navigation
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Custom Select Logic
         function toggleCustomSelect(e) {
             e.stopPropagation();
             document.getElementById('customSelect').classList.toggle('open');

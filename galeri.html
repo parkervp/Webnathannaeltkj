@@ -54,7 +54,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 4%;
+            padding: 1.2rem 8%;
             background: rgba(7, 9, 14, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -125,7 +125,15 @@
             border-radius: 2px;
         }
 
-        /* --- PAGE HEADER (GAYA KAPSUL NORMAL) --- */
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* --- PAGE HEADER --- */
         .page-header {
             text-align: center;
             padding: 3.5rem 1rem 1.5rem 1rem;
@@ -201,7 +209,7 @@
 
         /* --- GALLERY GRID & CARDS --- */
         .section {
-            padding: 1.5rem 4% 5rem 4%;
+            padding: 1.5rem 8% 5rem 8%;
         }
 
         .container {
@@ -390,20 +398,51 @@
         /* --- FOOTER --- */
         footer {
             text-align: center;
-            padding: 1.8rem 4%;
+            padding: 1.8rem 8%;
             border-top: 1px solid var(--border-light);
             background: rgba(7, 9, 14, 0.9);
             color: var(--text-muted);
             font-size: 0.85rem;
         }
 
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             header {
-                flex-direction: column;
-                gap: 1rem;
+                padding: 1rem 5%;
             }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: rgba(7, 9, 14, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 1.5rem 5%;
+                border-bottom: 1px solid var(--border-light);
+            }
+
+            nav.show {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
             .page-header h1 {
                 font-size: 2rem;
+            }
+
+            .section {
+                padding-left: 5%;
+                padding-right: 5%;
             }
         }
     </style>
@@ -416,7 +455,10 @@
             <div class="logo-icon"><i class="fa-solid fa-network-wired"></i></div>
             Edukasi <span>TJKT</span>
         </div>
-        <nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <nav id="nav-menu">
             <ul>
                 <li><a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a></li>
                 <li><a href="profil.html"><i class="fa-solid fa-user"></i> Profil</a></li>
@@ -428,7 +470,7 @@
         </nav>
     </header>
 
-    <!-- PAGE HEADER (GAYA KAPSUL NORMAL) -->
+    <!-- PAGE HEADER -->
     <div class="page-header">
         <div class="badge-pill">
             <i class="fa-solid fa-images"></i> Dokumentasi Praktikum
@@ -543,6 +585,17 @@
 
     <!-- INTERACTIVE SCRIPT -->
     <script>
+        // Toggle Navigasi Mobile
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (mobileMenu && navMenu) {
+            mobileMenu.addEventListener('click', () => {
+                navMenu.classList.toggle('show');
+            });
+        }
+
+        // Lightbox Control Elements
         const cards = document.querySelectorAll('.gallery-card');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
@@ -578,17 +631,21 @@
         });
 
         // Close Lightbox Triggers
-        closeBtn.addEventListener('click', closeLightboxModal);
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeLightboxModal);
+        }
 
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                closeLightboxModal();
-            }
-        });
+        if (lightbox) {
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightboxModal();
+                }
+            });
+        }
 
         // Close Lightbox with Escape Key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
                 closeLightboxModal();
             }
         });

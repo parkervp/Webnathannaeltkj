@@ -274,7 +274,7 @@
 
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
@@ -341,28 +341,32 @@
             line-height: 1.6;
         }
 
-        /* --- PARTNERSHIP & BADGES LIST --- */
-        .cert-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
+        /* --- ROADMAP TIMELINE --- */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
-        .cert-item {
-            background: rgba(255, 255, 255, 0.04);
+        .timeline-item {
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-light);
-            padding: 0.6rem 1.2rem;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
         }
 
-        .cert-item i {
+        .timeline-item h4 {
             color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            font-size: 0.88rem;
+            line-height: 1.5;
+            color: var(--text-muted);
         }
 
         /* --- FOOTER --- */
@@ -376,7 +380,7 @@
         }
 
         @media (max-width: 900px) {
-            .grid-2 {
+            .grid-2, .timeline {
                 grid-template-columns: 1fr;
             }
         }
@@ -423,7 +427,7 @@
     <header>
         <div class="logo">
             <div class="logo-icon"><i class="fa-solid fa-network-wired"></i></div>
-            Lab <span>Network</span>
+            Edukasi <span>TJKT</span>
         </div>
         <div class="menu-toggle" id="mobile-menu">
             <i class="fa-solid fa-bars"></i>
@@ -483,34 +487,69 @@
                         <div class="card-icon">
                             <i class="fa-solid fa-microchip"></i>
                         </div>
-                        <h3>1. Dasar-Dasar TJKT</h3>
-                        <p>K3LH, Perakitan Komputer, Pengenalan Komponen Jaringan, dan Pemrosesan Sinyal Dasar.</p>
+                        <h3>1. Dasar Teknik Network & Hardware</h3>
+                        <p>K3LH, perakitan komputer/perangkat jaringan, pengkabelan UTP (RJ45 crimping & testing), dan prinsip pemrosesan sinyal digital.</p>
                     </div>
 
                     <div class="card">
                         <div class="card-icon">
                             <i class="fa-solid fa-network-wired"></i>
                         </div>
-                        <h3>2. Jaringan Komputer</h3>
-                        <p>Model OSI, Protokol TCP/IP, IPv4 & IPv6 Subnetting, Switching, dan Routing Dasar.</p>
+                        <h3>2. Perancangan & Routing Jaringan</h3>
+                        <p>Model OSI & TCP/IP, IP Address (IPv4 Subnetting VLSM & IPv6), VLAN Switching, serta Dynamic Routing (OSPF, RIP, BGP).</p>
                     </div>
 
                     <div class="card">
                         <div class="card-icon">
                             <i class="fa-solid fa-server"></i>
                         </div>
-                        <h3>3. Administrasi Server</h3>
-                        <p>Sistem Operasi Linux/Windows Server, DHCP, DNS, Web Server, dan Keamanan Jaringan.</p>
+                        <h3>3. Administrasi Server & Cloud</h3>
+                        <p>Sistem Operasi Server (Linux Debian/Ubuntu & Windows Server), DNS, DHCP, Web Server, serta teknologi virtualisasi cloud.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <h3>4. Teknologi Jaringan Nirkabel</h3>
+                        <p>Infrastruktur Wireless LAN, frekuensi radio (2.4GHz & 5GHz), Access Point Enterprise, Point-to-Point, dan Hotspot Gateway.</p>
                     </div>
 
                     <div class="card">
                         <div class="card-icon">
                             <i class="fa-solid fa-tower-cell"></i>
                         </div>
-                        <h3>4. Telekomunikasi & FO</h3>
-                        <p>Transmisi Fiber Optic, Splicing, OTDR, Wireless LAN, dan Teknologi Seluler (4G/5G).</p>
+                        <h3>5. Fiber Optic & Telekomunikasi</h3>
+                        <p>Arsitektur FTTH (GPON/EPON), penyambungan serat optik (Fusion Splicer), pengukuran kualitas kabel (OTDR & OPM), dan seluler 4G/5G.</p>
                     </div>
 
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3>6. Keamanan Jaringan & VoIP</h3>
+                        <p>Firewall Filtering, Router OS, VPN (PPTP/L2TP/OpenVPN), pencegahan Cyber Attack, dan server komunikasi suara berbasis IP (VoIP/PBX).</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ROADMAP PEMBELAJARAN -->
+            <div>
+                <h2 class="section-title">Alur & Roadmap Pembelajaran</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>Tingkat 10 (Fase E)</h4>
+                        <p>Fokus pada dasar-dasar teknik jaringan, K3LH, konsep arsitektur komputer, serta pengenalan awal perakitan hardware & pengkabelan dasar.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Tingkat 11 (Fase F - Part 1)</h4>
+                        <p>Pendalaman routing, switching, instalasi jaringan nirkabel (Wireless), fiber optic dasar, serta administrasi sistem operasi server.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Tingkat 12 (Fase F - Part 2)</h4>
+                        <p>Penerapan Cyber Security, integrasi VoIP & FTTH skala luas, Praktik Kerja Lapangan (PKL), serta Sertifikasi Kompetensi Keahlian.</p>
+                    </div>
                 </div>
             </div>
 
@@ -531,7 +570,7 @@
                             <i class="fa-solid fa-terminal"></i>
                         </div>
                         <h3>System Administrator</h3>
-                        <p>Mengelola server Linux/Windows, mengurus *backup*, database, serta menjaga uptime layanan cloud/lokal.</p>
+                        <p>Mengelola server Linux/Windows, mengurus backup, database, serta menjaga uptime layanan cloud/lokal.</p>
                     </div>
 
                     <div class="card">
@@ -539,7 +578,7 @@
                             <i class="fa-solid fa-cable-car"></i>
                         </div>
                         <h3>Teknisi Fiber Optic</h3>
-                        <p>Melakukan penyambungan (*splicing*), pengukuran kualitas sinyal kabel optik, dan pemeliharaan jalur FTTH.</p>
+                        <p>Melakukan penyambungan (splicing), pengukuran kualitas sinyal kabel optik, dan pemeliharaan jalur FTTH.</p>
                     </div>
 
                     <div class="card">
@@ -547,31 +586,7 @@
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
                         <h3>IT Support & Cyber Sec</h3>
-                        <p>Memberikan dukungan teknis perangkat IT, menangani *troubleshooting*, serta menjaga keamanan sistem dasar.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FASILITAS & SERTIFIKASI (GRID 2) -->
-            <div class="grid-2" style="margin-top: 4rem; margin-bottom: 0;">
-                <div class="content-box">
-                    <h2><i class="fa-solid fa-building-user"></i> Fasilitas Pendukung</h2>
-                    <ul>
-                        <li>Laboratorium Jaringan Komputer & Cisco/Mikrotik.</li>
-                        <li>Laboratorium Server & Cyber Security terkonfigurasi.</li>
-                        <li>Peralatan Praktikum Fiber Optic (Fusion Splicer & OTDR).</li>
-                        <li>Akses Internet Dedicated High-Speed untuk praktikum.</li>
-                    </ul>
-                </div>
-
-                <div class="content-box">
-                    <h2><i class="fa-solid fa-award"></i> Sertifikasi & Kemitraan</h2>
-                    <p>Siswa dibekali kurikulum yang diselaraskan dengan standar sertifikasi industri nasional maupun internasional:</p>
-                    <div class="cert-list">
-                        <div class="cert-item"><i class="fa-solid fa-certificate"></i> Cisco CCNA Standard</div>
-                        <div class="cert-item"><i class="fa-solid fa-certificate"></i> Mikrotik MTCNA</div>
-                        <div class="cert-item"><i class="fa-solid fa-certificate"></i> Sertifikasi LSP / BNSP</div>
-                        <div class="cert-item"><i class="fa-solid fa-handshake"></i> Mitratel / Telkom DUDI</div>
+                        <p>Memberikan dukungan teknis perangkat IT, menangani troubleshooting, serta menjaga keamanan sistem dasar.</p>
                     </div>
                 </div>
             </div>

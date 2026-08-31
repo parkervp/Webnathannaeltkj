@@ -242,11 +242,31 @@
             font-size: 0.85rem;
             outline: none;
             transition: all 0.3s ease;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .form-select-wrapper {
+            position: relative;
+        }
+
+        .form-select-wrapper::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
         }
 
         .form-group select option {
-            background-color: #0b0f19;
-            color: #fff;
+            background-color: #152036;
+            color: #ffffff;
+            padding: 10px;
         }
 
         .form-group textarea {
@@ -366,7 +386,7 @@
                         <h2><i class="fa-solid fa-address-card" style="color: var(--primary);"></i> Informasi Sekretariat</h2>
                     </div>
                     <div class="action-menu">
-                        <button class="dots-btn" onclick="toggleMenu('menu1')" title="Opsi Kontak"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <button class="dots-btn" type="button" onclick="toggleMenu('menu1')" title="Opsi Kontak"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                         <div id="menu1" class="dropdown-menu">
                             <div class="dropdown-item" onclick="alert('Membuka Peta Laboratorium...')"><i class="fa-solid fa-map-location-dot"></i> Lihat di Google Maps</div>
                             <div class="dropdown-item" onclick="alert('Menyalin Kontak WhatsApp...')"><i class="fa-solid fa-copy"></i> Salin No. WhatsApp</div>
@@ -449,7 +469,7 @@
                         <h2><i class="fa-solid fa-paper-plane" style="color: var(--primary);"></i> Kirim Pesan</h2>
                     </div>
                     <div class="action-menu">
-                        <button class="dots-btn" onclick="toggleMenu('menu2')" title="Opsi Form"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <button class="dots-btn" type="button" onclick="toggleMenu('menu2')" title="Opsi Form"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                         <div id="menu2" class="dropdown-menu">
                             <div class="dropdown-item" onclick="resetForm()"><i class="fa-solid fa-rotate-left"></i> Reset Form</div>
                             <div class="dropdown-item" onclick="alert('Panduan pengisian formulir...')"><i class="fa-solid fa-circle-info"></i> Bantuan Form</div>
@@ -472,13 +492,15 @@
 
                     <div class="form-group">
                         <label for="kategori">Kategori Pertanyaan</label>
-                        <select id="kategori" required>
-                            <option value="" disabled selected>Pilih Topik...</option>
-                            <option value="pembelajaran">Materi Pembelajaran & Praktikum</option>
-                            <option value="konsultasi">Konsultasi Jaringan / Server</option>
-                            <option value="kunjungan">Izin Kunjungan Laboratorium</option>
-                            <option value="lainnya">Lainnya</option>
-                        </select>
+                        <div class="form-select-wrapper">
+                            <select id="kategori" required>
+                                <option value="" selected>Pilih Topik...</option>
+                                <option value="pembelajaran">Materi Pembelajaran & Praktikum</option>
+                                <option value="konsultasi">Konsultasi Jaringan / Server</option>
+                                <option value="kunjungan">Izin Kunjungan Laboratorium</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="form-group">

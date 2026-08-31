@@ -231,7 +231,6 @@
         }
 
         .form-group input,
-        .form-group select,
         .form-group textarea {
             width: 100%;
             background: var(--input-bg);
@@ -242,31 +241,77 @@
             font-size: 0.85rem;
             outline: none;
             transition: all 0.3s ease;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
         }
 
-        .form-select-wrapper {
+        /* CUSTOM DROPDOWN STYLING */
+        .custom-select-container {
             position: relative;
+            width: 100%;
         }
 
-        .form-select-wrapper::after {
+        .custom-select-trigger {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid var(--border-light);
+            padding: 0.75rem 0.9rem;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .custom-select-trigger:after {
             content: '\f107';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
             color: var(--text-muted);
-            pointer-events: none;
+            transition: transform 0.3s ease;
         }
 
-        .form-group select option {
-            background-color: #152036;
-            color: #ffffff;
-            padding: 10px;
+        .custom-select-container.open .custom-select-trigger:after {
+            transform: rotate(180deg);
+        }
+
+        .custom-select-container.open .custom-select-trigger {
+            border-color: var(--primary);
+            box-shadow: 0 0 12px var(--primary-glow);
+        }
+
+        .custom-options {
+            display: none;
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            right: 0;
+            background: #111827;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            z-index: 200;
+            overflow: hidden;
+        }
+
+        .custom-select-container.open .custom-options {
+            display: block;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        .custom-option {
+            padding: 0.75rem 0.9rem;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .custom-option:hover, .custom-option.selected {
+            background: rgba(0, 242, 254, 0.15);
+            color: var(--primary);
         }
 
         .form-group textarea {
@@ -275,7 +320,6 @@
         }
 
         .form-group input:focus,
-        .form-group select:focus,
         .form-group textarea:focus {
             border-color: var(--primary);
             box-shadow: 0 0 12px var(--primary-glow);
@@ -479,7 +523,7 @@
 
                 <p class="card-subtitle">Isi formulir di bawah ini untuk pertanyaan atau konsultasi seputar TJKT.</p>
 
-                <form id="pesanForm" action="#" method="post" class="contact-form" onsubmit="alert('Pesan berhasil terkirim!'); return false;">
+                <form id="pesanForm" action="#" method="post" class="contact-form" onsubmit="return handleFormSubmit(event)">
                     <div class="form-group">
                         <label for="nama">Nama Lengkap</label>
                         <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
@@ -491,15 +535,18 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="kategori">Kategori Pertanyaan</label>
-                        <div class="form-select-wrapper">
-                            <select id="kategori" required>
-                                <option value="" selected>Pilih Topik...</option>
-                                <option value="pembelajaran">Materi Pembelajaran & Praktikum</option>
-                                <option value="konsultasi">Konsultasi Jaringan / Server</option>
-                                <option value="kunjungan">Izin Kunjungan Laboratorium</option>
-                                <option value="lainnya">Lainnya</option>
-                            </select>
+                        <label>Kategori Pertanyaan</label>
+                        <input type="hidden" id="kategori" name="kategori" value="" required>
+                        <div class="custom-select-container" id="customSelect">
+                            <div class="custom-select-trigger" onclick="toggleCustomSelect(event)">
+                                <span id="selectedOptionText">Pilih Topik...</span>
+                            </div>
+                            <div class="custom-options">
+                                <div class="custom-option" data-value="pembelajaran" onclick="selectOption(this, 'Materi Pembelajaran & Praktikum')">Materi Pembelajaran & Praktikum</div>
+                                <div class="custom-option" data-value="konsultasi" onclick="selectOption(this, 'Konsultasi Jaringan / Server')">Konsultasi Jaringan / Server</div>
+                                <div class="custom-option" data-value="kunjungan" onclick="selectOption(this, 'Izin Kunjungan Laboratorium')">Izin Kunjungan Laboratorium</div>
+                                <div class="custom-option" data-value="lainnya" onclick="selectOption(this, 'Lainnya')">Lainnya</div>
+                            </div>
                         </div>
                     </div>
 
@@ -535,9 +582,46 @@
         menu.classList.toggle('active');
     }
 
+    /* CUSTOM SELECT LOGIC */
+    function toggleCustomSelect(e) {
+        e.stopPropagation();
+        document.getElementById('customSelect').classList.toggle('open');
+    }
+
+    function selectOption(element, text) {
+        var val = element.getAttribute('data-value');
+        document.getElementById('kategori').value = val;
+        document.getElementById('selectedOptionText').innerText = text;
+        
+        var options = document.querySelectorAll('.custom-option');
+        options.forEach(function(opt) {
+            opt.classList.remove('selected');
+        });
+        element.classList.add('selected');
+        
+        document.getElementById('customSelect').classList.remove('open');
+    }
+
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        var kategoriVal = document.getElementById('kategori').value;
+        if (!kategoriVal) {
+            alert('Silakan pilih Kategori Pertanyaan terlebih dahulu!');
+            return false;
+        }
+        alert('Pesan berhasil terkirim!');
+        resetForm();
+        return false;
+    }
+
     function resetForm() {
         document.getElementById('pesanForm').reset();
-        alert('Formulir berhasil di-reset!');
+        document.getElementById('kategori').value = '';
+        document.getElementById('selectedOptionText').innerText = 'Pilih Topik...';
+        var options = document.querySelectorAll('.custom-option');
+        options.forEach(function(opt) {
+            opt.classList.remove('selected');
+        });
     }
 
     window.onclick = function() {
@@ -545,6 +629,8 @@
         allMenus.forEach(function(m) {
             m.classList.remove('active');
         });
+        var customSelect = document.getElementById('customSelect');
+        if (customSelect) customSelect.classList.remove('open');
     };
 </script>
 

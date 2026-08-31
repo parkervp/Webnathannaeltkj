@@ -15,9 +15,8 @@
         /* --- CORE STYLES & VARIABLES --- */
         :root {
             --bg-dark: #07090e;
-            --bg-card: rgba(18, 24, 38, 0.6);
+            --bg-card: rgba(18, 24, 38, 0.75);
             --primary: #00f2fe;
-            --primary-glow: rgba(0, 242, 254, 0.15);
             --secondary: #4facfe;
             --accent: #7f00ff;
             --border-light: rgba(255, 255, 255, 0.08);
@@ -50,8 +49,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 8%;
-            background: rgba(7, 9, 14, 0.75);
+            padding: 1.2rem 4%;
+            background: rgba(7, 9, 14, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-light);
@@ -61,9 +60,8 @@
         }
 
         .logo {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 800;
-            letter-spacing: -0.5px;
             color: #fff;
             display: flex;
             align-items: center;
@@ -71,14 +69,14 @@
         }
 
         .logo-icon {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             border-radius: 8px;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #fff;
         }
 
@@ -92,13 +90,13 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2.2rem;
+            gap: 1.8rem;
         }
 
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
@@ -119,50 +117,79 @@
             border-radius: 2px;
         }
 
-        /* --- PAGE HEADER MONO --- */
+        /* --- PAGE HEADER (GAYA KAPSUL/NORMAL SEPERTI PROFIL) --- */
         .page-header {
             text-align: center;
-            padding: 3.5rem 8% 2rem 8%;
+            padding: 3.5rem 1rem 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            background: rgba(0, 242, 254, 0.05);
+            border: 1px solid rgba(0, 242, 254, 0.25);
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
         }
 
         .page-header h1 {
-            font-family: var(--font-mono);
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
         }
 
-        /* --- MAIN DASHBOARD LAYOUT --- */
-        .section {
-            padding: 1rem 8% 5rem 8%;
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            font-weight: 400;
+            max-width: 680px;
+            line-height: 1.6;
+            margin: 0 auto;
+        }
+
+        /* --- DASHBOARD CONTAINER & GRID (PRESISI 3 KOLOM) --- */
+        .dashboard-container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-bottom: 4rem;
         }
 
         .dashboard-grid {
             display: grid;
-            grid-template-columns: 280px 1fr 280px;
-            gap: 1.5rem;
-            max-width: 1280px;
-            margin: 0 auto;
+            grid-template-columns: 270px 1fr 270px;
+            gap: 1.2rem;
+            align-items: start;
         }
 
-        /* --- CARD & WIDGET STYLES --- */
+        /* --- WIDGET CARD STYLES --- */
         .widget-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-radius: 18px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            border-radius: 16px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
         }
 
         .widget-title {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.6rem;
@@ -174,20 +201,20 @@
             color: var(--primary);
         }
 
-        /* STATUS LIST WIDGET */
+        /* --- KOLOM KIRI: STATUS LAB & PERALATAN --- */
         .status-list {
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
+            gap: 0.75rem;
         }
 
         .status-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
-            padding-bottom: 0.6rem;
+            padding-bottom: 0.55rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -197,9 +224,9 @@
         }
 
         .badge-status {
-            padding: 0.2rem 0.6rem;
+            padding: 0.2rem 0.55rem;
             border-radius: 6px;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             font-weight: 700;
             font-family: var(--font-mono);
         }
@@ -208,26 +235,30 @@
         .badge-status.inuse { background: rgba(0, 242, 254, 0.15); color: var(--primary); }
         .badge-status.maint { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
 
-        /* MAIN TASKS GRID */
+        /* --- KOLOM TENGAH: MODUL PRAKTIKUM --- */
         .tasks-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1.2rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .task-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
-            border-radius: 18px;
-            padding: 1.5rem;
+            border-radius: 16px;
+            padding: 1.3rem;
             backdrop-filter: blur(16px);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .task-card:hover {
             border-color: var(--border-hover);
-            transform: translateY(-4px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -10px rgba(0, 242, 254, 0.2);
         }
 
         .task-header {
@@ -243,13 +274,13 @@
         }
 
         .task-header h3 {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: #fff;
         }
 
         .task-card p {
-            font-size: 0.88rem;
+            font-size: 0.83rem;
             color: var(--text-muted);
             line-height: 1.5;
             margin-bottom: 1.2rem;
@@ -259,37 +290,37 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            padding: 0.35rem 0.8rem;
+            padding: 0.35rem 0.75rem;
             border-radius: 8px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 600;
             font-family: var(--font-mono);
             background: rgba(0, 242, 254, 0.08);
             color: var(--primary);
             border: 1px solid rgba(0, 242, 254, 0.2);
-            text-transform: uppercase;
+            width: fit-content;
         }
 
         /* ALUR PRAKTIKUM SECTION */
         .flow-section {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
-            border-radius: 18px;
-            padding: 1.5rem;
+            border-radius: 16px;
+            padding: 1.3rem;
         }
 
         .flow-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+            gap: 0.8rem;
             margin-top: 1rem;
         }
 
         .flow-step {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--border-light);
-            border-radius: 14px;
-            padding: 1.2rem;
+            border-radius: 12px;
+            padding: 1rem;
         }
 
         .step-num {
@@ -297,35 +328,35 @@
             background: rgba(0, 242, 254, 0.15);
             color: var(--primary);
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             padding: 0.2rem 0.5rem;
             border-radius: 6px;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
         }
 
         .flow-step h4 {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: #fff;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
         }
 
         .flow-step p {
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
             line-height: 1.4;
         }
 
-        /* RIGHT SIDEBAR WIDGETS */
+        /* --- KOLOM KANAN: PROGRES & AGENDA --- */
         .progress-bar-container {
-            margin-bottom: 1rem;
+            margin-bottom: 0.9rem;
         }
 
         .progress-info {
             display: flex;
             justify-content: space-between;
-            font-size: 0.82rem;
-            margin-bottom: 0.4rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.35rem;
             color: var(--text-muted);
         }
 
@@ -343,7 +374,7 @@
         }
 
         .agenda-item {
-            padding: 0.8rem 0;
+            padding: 0.75rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -352,38 +383,44 @@
         }
 
         .agenda-title {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: #fff;
             margin-bottom: 0.2rem;
         }
 
         .agenda-date {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
 
         /* --- FOOTER --- */
         footer {
             text-align: center;
-            padding: 2.5rem 8%;
+            padding: 1.8rem 4%;
             border-top: 1px solid var(--border-light);
             background: rgba(7, 9, 14, 0.9);
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 1024px) {
+        /* RESPONSIVE LAYOUT */
+        @media (max-width: 1100px) {
             .dashboard-grid {
                 grid-template-columns: 1fr;
+            }
+            .tasks-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
-                gap: 1.2rem;
+                gap: 1rem;
+            }
+            .page-header h1 {
+                font-size: 2rem;
             }
             .tasks-grid, .flow-grid {
                 grid-template-columns: 1fr;
@@ -397,7 +434,7 @@
     <header>
         <div class="logo">
             <div class="logo-icon"><i class="fa-solid fa-network-wired"></i></div>
-            Lab <span>Network</span>
+            Edukasi <span>TJKT</span>
         </div>
         <nav>
             <ul>
@@ -411,16 +448,20 @@
         </nav>
     </header>
 
-    <!-- HEADER MONO TITLE -->
+    <!-- PAGE HEADER (GAYA KAPSUL NORMAL) -->
     <div class="page-header">
-        <h1>[ TASKS_&_ACTIVITIES ]</h1>
+        <div class="badge-pill">
+            <i class="fa-solid fa-graduation-cap"></i> Program Keahlian
+        </div>
+        <h1>Kegiatan Jurusan TJKT</h1>
+        <p>Mengenal lebih dekat Program Keahlian Teknik Jaringan Komputer dan Telekomunikasi SMKN 1 Klaten</p>
     </div>
 
-    <!-- MAIN DASHBOARD -->
-    <section class="section">
+    <!-- MAIN DASHBOARD CONTAINER -->
+    <div class="dashboard-container">
         <div class="dashboard-grid">
             
-            <!-- LEFT COLUMN: STATUS LAB & INVENTARIS -->
+            <!-- KOLOM KIRI: STATUS LAB & PERALATAN UTAMA -->
             <div class="col-left">
                 <div class="widget-card">
                     <div class="widget-title">
@@ -467,39 +508,97 @@
                 </div>
             </div>
 
-            <!-- CENTER COLUMN: DAFTAR PRAKTIKUM & ALUR -->
+            <!-- KOLOM TENGAH: DAFTAR MODUL PRAKTIKUM & ALUR -->
             <div class="col-center">
-                <!-- GRID MODUL PRAKTIKUM -->
+                <!-- GRID MODUL PRAKTIKUM (8 CARD SIMETRIS) -->
                 <div class="tasks-grid">
                     
-                    <!-- Card 1 -->
                     <div class="task-card">
-                        <div class="task-header">
-                            <i class="fa-solid fa-ethernet"></i>
-                            <h3>Perakitan Kabel</h3>
+                        <div>
+                            <div class="task-header">
+                                <i class="fa-solid fa-ethernet"></i>
+                                <h3>Perakitan Kabel</h3>
+                            </div>
+                            <p>Praktikum pembuatan kabel LAN menggunakan UTP Cat6, konektor RJ-45, serta pengujian menggunakan LAN Tester.</p>
                         </div>
-                        <p>Praktikum pembuatan kabel LAN menggunakan UTP Cat6, konektor RJ-45, serta pengujian menggunakan LAN Tester.</p>
                         <span class="tag-praktikum"><i class="fa-solid fa-wrench"></i> Praktikum Fisik</span>
                     </div>
 
-                    <!-- Card 2 -->
                     <div class="task-card">
-                        <div class="task-header">
-                            <i class="fa-solid fa-bolt"></i>
-                            <h3>Splicing Fiber</h3>
+                        <div>
+                            <div class="task-header">
+                                <i class="fa-solid fa-bolt"></i>
+                                <h3>Splicing Fiber</h3>
+                            </div>
+                            <p>Latihan penyambungan serat optik menggunakan Fusion Splicer dan pengukuran redaman sinyal dengan OTDR/OPM.</p>
                         </div>
-                        <p>Latihan penyambungan serat optik menggunakan Fusion Splicer dan pengukuran redaman sinyal dengan OTDR/OPM.</p>
                         <span class="tag-praktikum"><i class="fa-solid fa-wrench"></i> Praktikum Fisik</span>
                     </div>
 
-                    <!-- Card 3 -->
                     <div class="task-card">
-                        <div class="task-header">
-                            <i class="fa-solid fa-sliders"></i>
-                            <h3>Config Router</h3>
+                        <div>
+                            <div class="task-header">
+                                <i class="fa-solid fa-sliders"></i>
+                                <h3>Config Router</h3>
+                            </div>
+                            <p>Simulasi dan praktikum langsung pengaturan routing dasar, IP Address, DHCP Server, serta Firewall menggunakan MikroTik.</p>
                         </div>
-                        <p>Simulasi dan praktikum langsung pengaturan routing dasar, IP Address, DHCP Server, serta Firewall menggunakan MikroTik.</p>
                         <span class="tag-praktikum"><i class="fa-solid fa-network-wired"></i> Jaringan</span>
+                    </div>
+
+                    <div class="task-card">
+                        <div>
+                            <div class="task-header">
+                                <i class="fa-solid fa-diagram-project"></i>
+                                <h3>VLAN & Trunking</h3>
+                            </div>
+                            <p>Konfigurasi Virtual LAN dan Trunking Protocol pada Switch Managed untuk efisiensi serta segmentasi lalu lintas jaringan.</p>
+                        </div>
+                        <span class="tag-praktikum"><i class="fa-solid fa-network-wired"></i> Jaringan</span>
+                    </div>
+
+                    <div class="task-card">
+                        <div>
+                            <div class="task-header">
+                                <i class="fa-solid fa-server"></i>
+                                <h3>Administrasi Server</h3>
+                            </div>
+                            <p>Instalasi dan konfigurasi sistem operasi Linux Debian Server untuk layanan DNS, Web Server (Apache/Nginx), dan Database.</p>
+                        </div>
+                        <span class="tag-praktikum"><i class="fa-solid fa-server"></i> Administrasi</span>
+                    </div>
+
+                    <div class="task-card">
+                        <div>
+                            <div class="task-header">
+                                <i class="fa-solid fa-wifi"></i>
+                                <h3>Manajemen Wireless</h3>
+                            </div>
+                            <p>Setting Access Point, pembuatan Hotspot server, pembatasan bandwidth (Bandwidth Management), dan User Manager.</p>
+                        </div>
+                        <span class="tag-praktikum"><i class="fa-solid fa-wifi"></i> Nirkabel</span>
+                    </div>
+
+                    <div class="task-card">
+                        <div>
+                            <div class="task-header">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <h3>Keamanan Jaringan</h3>
+                            </div>
+                            <p>Implementasi Filter Rules, Port Blocking, NAT, serta VPN (PPTP/L2TP) untuk mengamankan lalu lintas data jaringan.</p>
+                        </div>
+                        <span class="tag-praktikum"><i class="fa-solid fa-shield-halved"></i> Keamanan</span>
+                    </div>
+
+                    <div class="task-card">
+                        <div>
+                            <div class="task-header">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <h3>Cloud & VoIP</h3>
+                            </div>
+                            <p>Konfigurasi Server VoIP Asterisk/Briker dan pengenalan dasar arsitektur Cloud Computing & Virtualisasi Proxmox.</p>
+                        </div>
+                        <span class="tag-praktikum"><i class="fa-solid fa-cloud"></i> Layanan Cloud</span>
                     </div>
 
                 </div>
@@ -510,36 +609,31 @@
                         <i class="fa-solid fa-route"></i> Alur Pelaksanaan Praktikum
                     </div>
                     <div class="flow-grid">
-                        
                         <div class="flow-step">
                             <span class="step-num">01</span>
                             <h4>Pemahaman Teori</h4>
                             <p>Mempelajari konsep dasar arsitektur & K3LH laboratorium.</p>
                         </div>
-
                         <div class="flow-step">
                             <span class="step-num">02</span>
                             <h4>Persiapan Alat</h4>
                             <p>Mengecek kelengkapan toolkits, kabel, & perangkat jaringan.</p>
                         </div>
-
                         <div class="flow-step">
                             <span class="step-num">03</span>
                             <h4>Eksekusi Praktikum</h4>
                             <p>Melakukan perakitan, konfigurasi, & pengujian jaringan.</p>
                         </div>
-
                     </div>
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN: PROGRES & AGENDA UJI -->
+            <!-- KOLOM KANAN: PROGRES & AGENDA UJI -->
             <div class="col-right">
                 <div class="widget-card">
                     <div class="widget-title">
                         <i class="fa-solid fa-chart-line"></i> Progres Kurikulum
                     </div>
-                    
                     <div class="progress-bar-container">
                         <div class="progress-info">
                             <span>Jaringan Dasar</span>
@@ -549,7 +643,6 @@
                             <div class="progress-fill" style="width: 100%;"></div>
                         </div>
                     </div>
-
                     <div class="progress-bar-container">
                         <div class="progress-info">
                             <span>Serat Optik</span>
@@ -559,7 +652,6 @@
                             <div class="progress-fill" style="width: 85%;"></div>
                         </div>
                     </div>
-
                     <div class="progress-bar-container">
                         <div class="progress-info">
                             <span>Administrasi Server</span>
@@ -573,7 +665,7 @@
 
                 <div class="widget-card">
                     <div class="widget-title">
-                        <i class="fa-solid fa-calendar-days"></i> Agenda Uji Kompetensi
+                        <i class="fa-solid fa-calendar-days"></i> Agenda Uji
                     </div>
                     <div class="agenda-item">
                         <div class="agenda-title">UKK Kabel UTP & Fiber Optic</div>
@@ -587,7 +679,7 @@
             </div>
 
         </div>
-    </section>
+    </div>
 
     <!-- FOOTER -->
     <footer>

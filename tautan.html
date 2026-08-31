@@ -8,7 +8,7 @@
     <!-- Google Fonts & Font Awesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -121,6 +121,14 @@
             border-radius: 2px;
         }
 
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
         /* --- PAGE HEADER --- */
         .page-header {
             text-align: center;
@@ -169,7 +177,7 @@
 
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
@@ -224,12 +232,29 @@
             color: var(--primary);
             font-size: 1.35rem;
             margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .link-card:hover .link-icon {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            border-color: transparent;
         }
 
         .link-content {
             display: flex;
             flex-direction: column;
             height: 100%;
+        }
+
+        .link-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
         }
 
         .link-content h3 {
@@ -277,19 +302,86 @@
 
         /* --- FOOTER --- */
         footer {
-            text-align: center;
-            padding: 2.5rem 8%;
             border-top: 1px solid var(--border-light);
-            background: rgba(7, 9, 14, 0.9);
+            background: rgba(7, 9, 14, 0.95);
+            padding: 4rem 8% 2rem 8%;
             color: var(--text-muted);
             font-size: 0.9rem;
         }
 
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            margin-top: 1rem;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .footer-col a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             header {
+                padding: 1rem 5%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: rgba(7, 9, 14, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 1.5rem 5%;
+                border-bottom: 1px solid var(--border-light);
+            }
+
+            nav.show {
+                display: block;
+            }
+
+            nav ul {
                 flex-direction: column;
                 gap: 1.2rem;
             }
+
             .page-header h1 {
                 font-size: 2.2rem;
             }
@@ -302,9 +394,12 @@
     <header>
         <div class="logo">
             <div class="logo-icon"><i class="fa-solid fa-network-wired"></i></div>
-            Lab <span>Network</span>
+            Edukasi <span>TJKT</span>
         </div>
-        <nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <nav id="nav-menu">
             <ul>
                 <li><a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a></li>
                 <li><a href="profil.html"><i class="fa-solid fa-user"></i> Profil</a></li>
@@ -322,7 +417,7 @@
             <i class="fa-solid fa-link"></i> Direktori Resmi
         </div>
         <h1>Tautan & Referensi Belajar</h1>
-        <p>Kumpulan direktori eksternal, dokumentasi resmi, dan platform modul pendukung TJKT</p>
+        <p>Kumpulan direktori eksternal, dokumentasi resmi, dan platform simulator pendukung TJKT</p>
     </div>
 
     <!-- MAIN LINKS GRID SECTION -->
@@ -336,6 +431,7 @@
                         <i class="fa-solid fa-globe"></i>
                     </div>
                     <div class="link-content">
+                        <span class="link-tag">Akademi / Sertifikasi</span>
                         <h3>Cisco Networking Academy (NetAcad)</h3>
                         <p>Platform pembelajaran global resmi untuk dasar-dasar CCNA, Routing, Switching, dan Cybersecurity.</p>
                         <a href="https://www.netacad.com" target="_blank" rel="noopener noreferrer" class="link-button">
@@ -344,15 +440,16 @@
                     </div>
                 </div>
 
-                <!-- Card 2: MikroTik Wiki -->
+                <!-- Card 2: MikroTik Documentation -->
                 <div class="link-card">
                     <div class="link-icon">
                         <i class="fa-solid fa-satellite-dish"></i>
                     </div>
                     <div class="link-content">
-                        <h3>MikroTik Wiki & Documentation</h3>
+                        <span class="link-tag">Dokumentasi RouterOS</span>
+                        <h3>MikroTik Documentation</h3>
                         <p>Dokumentasi resmi konfigurasi RouterOS, panduan fitur Winbox, dan studi kasus routing MikroTik.</p>
-                        <a href="https://wiki.mikrotik.com" target="_blank" rel="noopener noreferrer" class="link-button">
+                        <a href="https://help.mikrotik.com/docs/" target="_blank" rel="noopener noreferrer" class="link-button">
                             Kunjungi Situs <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
@@ -364,9 +461,55 @@
                         <i class="fa-brands fa-linux"></i>
                     </div>
                     <div class="link-content">
+                        <span class="link-tag">Sistem Operasi Server</span>
                         <h3>Debian Linux Official Documentation</h3>
                         <p>Panduan instalasi, perintah dasar terminal, dan manajemen paket Debian Server.</p>
                         <a href="https://www.debian.org/doc/" target="_blank" rel="noopener noreferrer" class="link-button">
+                            Kunjungi Situs <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4: Cisco Packet Tracer -->
+                <div class="link-card">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-diagram-project"></i>
+                    </div>
+                    <div class="link-content">
+                        <span class="link-tag">Simulasi Jaringan</span>
+                        <h3>Cisco Packet Tracer Software</h3>
+                        <p>Unduh software simulasi jaringan interaktif untuk mendesain topologi LAN/WAN sebelum diterapkan ke hardware fisik.</p>
+                        <a href="https://www.netacad.com/courses/packet-tracer" target="_blank" rel="noopener noreferrer" class="link-button">
+                            Kunjungi Situs <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 5: Wireshark Foundation -->
+                <div class="link-card">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <div class="link-content">
+                        <span class="link-tag">Analisis Protokol Data</span>
+                        <h3>Wireshark Network Analyzer</h3>
+                        <p>Tools standar industri untuk melakukan packet capturing, analisis protokol TCP/IP, serta troubleshooting lalu lintas data.</p>
+                        <a href="https://www.wireshark.org" target="_blank" rel="noopener noreferrer" class="link-button">
+                            Kunjungi Situs <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 6: GNS3 Network Simulator -->
+                <div class="link-card">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <div class="link-content">
+                        <span class="link-tag">Emulasi Perangkat Lanjut</span>
+                        <h3>GNS3 Graphical Network Simulator</h3>
+                        <p>Software emulasi jaringan tingkat lanjut yang mendukung integrasi OS router asli seperti Cisco IOS dan MikroTik CHR.</p>
+                        <a href="https://www.gns3.com" target="_blank" rel="noopener noreferrer" class="link-button">
                             Kunjungi Situs <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
@@ -378,8 +521,50 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Edukasi TJKT. Hak Cipta Dilindungi.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        Edukasi <span>TJKT</span>
+                    </div>
+                    <p>Portal edukasi interaktif untuk mempelajari ilmu Teknik Jaringan Komputer & Telekomunikasi.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="profil.html">Profil</a></li>
+                        <li><a href="kegiatan.html">Kegiatan</a></li>
+                        <li><a href="galeri.html">Galeri</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Halaman Lain</h4>
+                    <ul>
+                        <li><a href="tautan.html">Tautan Belajar</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Edukasi TJKT. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- JAVASCRIPT UNTUK INTERAKSI MENU -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+    </script>
 
 </body>
 </html>

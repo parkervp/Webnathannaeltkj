@@ -25,6 +25,7 @@
             --input-bg: rgba(255, 255, 255, 0.03);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
+            --success: #10b981;
         }
 
         * {
@@ -216,17 +217,17 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
-            margin-bottom: 2rem;
+            margin-bottom: 1.8rem;
         }
 
         .info-item {
             display: flex;
             align-items: flex-start;
             gap: 1.2rem;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--border-light);
-            padding: 1.1rem;
+            padding: 1rem;
             border-radius: 16px;
             transition: border-color 0.3s ease;
         }
@@ -236,8 +237,8 @@
         }
 
         .info-icon {
-            width: 44px;
-            height: 44px;
+            width: 42px;
+            height: 42px;
             border-radius: 12px;
             background: rgba(0, 242, 254, 0.08);
             border: 1px solid rgba(0, 242, 254, 0.25);
@@ -245,20 +246,20 @@
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             flex-shrink: 0;
         }
 
         .info-text strong {
             display: block;
             color: #fff;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             margin-bottom: 0.2rem;
         }
 
         .info-text p, .info-text a {
             color: var(--text-muted);
-            font-size: 0.93rem;
+            font-size: 0.9rem;
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -267,10 +268,10 @@
             color: var(--primary);
         }
 
-        /* --- SOCIAL MEDIA LINKS --- */
+        /* --- SOCIAL MEDIA & COMMUNITY LINKS --- */
         .social-section {
-            margin-top: 1.8rem;
-            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.2rem;
             border-top: 1px solid var(--border-light);
         }
 
@@ -283,6 +284,7 @@
 
         .social-icons {
             display: flex;
+            flex-wrap: wrap;
             gap: 0.8rem;
         }
 
@@ -313,7 +315,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
         }
 
         .form-group {
@@ -329,6 +331,7 @@
         }
 
         .form-group input,
+        .form-group select,
         .form-group textarea {
             width: 100%;
             background: var(--input-bg);
@@ -341,7 +344,13 @@
             transition: all 0.3s ease;
         }
 
+        .form-group select option {
+            background-color: #0d131f;
+            color: #fff;
+        }
+
         .form-group input:focus,
+        .form-group select:focus,
         .form-group textarea:focus {
             border-color: var(--primary);
             box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
@@ -374,6 +383,109 @@
         .btn-submit:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(127, 0, 255, 0.5);
+        }
+
+        /* --- SERVER STATUS SECTION (PENGGANTI MAPS) --- */
+        .status-section {
+            margin-top: 3rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(16px);
+        }
+
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .status-header h3 {
+            font-size: 1.25rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.8rem;
+            border-radius: 20px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--success);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--success);
+            box-shadow: 0 0 8px var(--success);
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .status-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: rgba(0, 242, 254, 0.05);
+            border: 1px solid rgba(0, 242, 254, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .status-info h4 {
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .status-info p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .status-state {
+            margin-left: auto;
+            color: var(--success);
+            font-size: 0.85rem;
+            font-weight: 600;
         }
 
         /* --- FAQ SECTION --- */
@@ -446,7 +558,7 @@
     <header>
         <div class="logo">
             <div class="logo-icon"><i class="fa-solid fa-network-wired"></i></div>
-            Lab <span>Network</span>
+            Edukasi <span>TJKT</span>
         </div>
         <nav>
             <ul>
@@ -466,7 +578,7 @@
             <i class="fa-solid fa-comments"></i> Hubungi Pengelola
         </div>
         <h1>Hubungi Kami</h1>
-        <p>Pertanyaan seputar program pembelajaran, konsultasi, atau informasi pendaftaran TJKT.</p>
+        <p>Pertanyaan seputar program pembelajaran, konsultasi teknis jaringan, atau informasi laboratorium TJKT.</p>
     </div>
 
     <!-- CONTACT SECTION -->
@@ -484,8 +596,18 @@
                             <i class="fa-solid fa-location-dot"></i>
                         </div>
                         <div class="info-text">
-                            <strong>Alamat</strong>
+                            <strong>Alamat Utama</strong>
                             <p>SMK Negeri 1 Klaten</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <div class="info-text">
+                            <strong>Lokasi Ruangan</strong>
+                            <p>Gedung Lab Komputer, Lantai 1 </p>
                         </div>
                     </div>
 
@@ -494,7 +616,7 @@
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                         <div class="info-text">
-                            <strong>Email</strong>
+                            <strong>Email Resmi</strong>
                             <p><a href="mailto:info@edukasitjkt.sch.id">info@edukasitjkt.sch.id</a></p>
                         </div>
                     </div>
@@ -519,14 +641,16 @@
                         </div>
                     </div>
 
-                    <!-- SOCIAL MEDIA -->
+                    <!-- SOCIAL MEDIA & COMMUNITY LINKS -->
                     <div class="social-section">
-                        <div class="social-title">Media Sosial Resmi</div>
+                        <div class="social-title">Media Sosial & Komunitas</div>
                         <div class="social-icons">
                             <a href="#" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
                             <a href="#" class="social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
                             <a href="#" class="social-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
                             <a href="#" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="#" class="social-btn" title="Telegram Community"><i class="fa-brands fa-telegram"></i></a>
+                            <a href="#" class="social-btn" title="Discord Server"><i class="fa-brands fa-discord"></i></a>
                         </div>
                     </div>
                 </div>
@@ -544,6 +668,16 @@
                             <input type="email" id="email" placeholder="nama@email.com" required>
                         </div>
                         <div class="form-group">
+                            <label for="kategori">Kategori Pertanyaan</label>
+                            <select id="kategori" required>
+                                <option value="" disabled selected>Pilih Topik...</option>
+                                <option value="pembelajaran">Materi Pembelajaran & Praktikum</option>
+                                <option value="konsultasi">Konsultasi Jaringan / Server</option>
+                                <option value="kunjungan">Izin Kunjungan Laboratorium</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="subjek">Subjek</label>
                             <input type="text" id="subjek" placeholder="Topik pertanyaan" required>
                         </div>
@@ -557,6 +691,50 @@
                     </form>
                 </div>
 
+            </div>
+
+            <!-- SERVER & NETWORK STATUS SECTION (PENGGANTI MAPS) -->
+            <div class="status-section">
+                <div class="status-header">
+                    <h3><i class="fa-solid fa-server" style="color: var(--primary);"></i> Status Server & Jaringan Lab</h3>
+                    <div class="status-badge">
+                        <span class="pulse-dot"></span> Semua Sistem Normal
+                    </div>
+                </div>
+                <div class="status-grid">
+                    <div class="status-card">
+                        <div class="status-icon"><i class="fa-solid fa-globe"></i></div>
+                        <div class="status-info">
+                            <h4>Web Server</h4>
+                            <p>Uptime: 99.9%</p>
+                        </div>
+                        <span class="status-state">Online</span>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-icon"><i class="fa-solid fa-wifi"></i></div>
+                        <div class="status-info">
+                            <h4>Lab Wi-Fi / Hotspot</h4>
+                            <p>Latency: 4ms</p>
+                        </div>
+                        <span class="status-state">Online</span>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-icon"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+                        <div class="status-info">
+                            <h4>FTP Repository</h4>
+                            <p>Speed: 1 Gbps</p>
+                        </div>
+                        <span class="status-state">Online</span>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="status-info">
+                            <h4>Firewall / Router</h4>
+                            <p>Status: Active</p>
+                        </div>
+                        <span class="status-state">Online</span>
+                    </div>
+                </div>
             </div>
 
             <!-- FAQ SECTION -->

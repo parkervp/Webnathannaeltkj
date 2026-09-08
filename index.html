@@ -364,23 +364,6 @@
             font-size: 0.95rem;
         }
 
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-top: 1.2rem;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            padding: 0.2rem 0.6rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            color: var(--primary);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
         /* --- ROADMAP / ALUR PEMBELAJARAN --- */
         .roadmap-grid {
             display: grid;
@@ -432,70 +415,6 @@
             color: var(--text-muted);
             font-size: 0.92rem;
             line-height: 1.6;
-        }
-
-        /* --- STYLES TAMBAHAN: GLOSARIUM & PROJECT --- */
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 20px;
-            padding: 2rem;
-            backdrop-filter: blur(16px);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-3px);
-        }
-
-        .project-badge {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #00f2fe;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .project-card h3 {
-            font-size: 1.25rem;
-            color: #fff;
-            margin-bottom: 0.8rem;
-        }
-
-        .project-card p {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            line-height: 1.6;
-            margin-bottom: 1.2rem;
-        }
-
-        .glossary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.2rem;
-        }
-
-        .glossary-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-light);
-            padding: 1.2rem;
-            border-radius: 12px;
-        }
-
-        .glossary-item h4 {
-            color: var(--primary);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .glossary-item p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            line-height: 1.5;
         }
 
         /* --- FAQ SECTION --- */
@@ -711,11 +630,6 @@
                     </div>
                     <h3>Perakitan & Hardware</h3>
                     <p>Memahami arsitektur komputer, komponen utama PC/Server, K3LH, serta teknik troubleshooting perangkat keras secara presisi.</p>
-                    <div class="card-tags">
-                        <span class="tag">PC Build</span>
-                        <span class="tag">K3LH</span>
-                        <span class="tag">BIOS</span>
-                    </div>
                 </div>
 
                 <!-- Card 2 -->
@@ -725,11 +639,6 @@
                     </div>
                     <h3>Jaringan & Routing</h3>
                     <p>Konfigurasi IP Address, Subnetting VLSM, Switching, Router MikroTik & Cisco, hingga pengelolaan trafik data LAN/WAN.</p>
-                    <div class="card-tags">
-                        <span class="tag">VLSM</span>
-                        <span class="tag">MikroTik</span>
-                        <span class="tag">OSPF</span>
-                    </div>
                 </div>
 
                 <!-- Card 3 -->
@@ -739,11 +648,6 @@
                     </div>
                     <h3>Telekomunikasi & Fiber</h3>
                     <p>Pengenalan media transmisi nirkabel, sistem gelombang radio, dan teknik penyambungan kabel Fiber Optic (Splicing).</p>
-                    <div class="card-tags">
-                        <span class="tag">Splicer</span>
-                        <span class="tag">OTDR</span>
-                        <span class="tag">FTTH</span>
-                    </div>
                 </div>
 
                 <!-- Card 4 -->
@@ -753,11 +657,6 @@
                     </div>
                     <h3>Administrasi Server</h3>
                     <p>Instalasi dan konfigurasi sistem operasi server (Linux/Windows Server), DNS, DHCP, Web Server (Nginx/Apache), dan FTP.</p>
-                    <div class="card-tags">
-                        <span class="tag">Debian</span>
-                        <span class="tag">Nginx</span>
-                        <span class="tag">DNS/DHCP</span>
-                    </div>
                 </div>
 
                 <!-- Card 5 -->
@@ -767,11 +666,6 @@
                     </div>
                     <h3>Keamanan Jaringan</h3>
                     <p>Implementasi Firewall, Filtering IP, VPN (PPTP/L2TP/OpenVPN), Port Security, dan pencegahan serangan siber dasar.</p>
-                    <div class="card-tags">
-                        <span class="tag">Firewall</span>
-                        <span class="tag">VPN</span>
-                        <span class="tag">Wireshark</span>
-                    </div>
                 </div>
 
                 <!-- Card 6 -->
@@ -781,11 +675,6 @@
                     </div>
                     <h3>Teknologi Wireless</h3>
                     <p>Perancangan jaringan nirkabel, Access Point, Wireless Distribution System (WDS), dan optimasi sinyal indoor/outdoor.</p>
-                    <div class="card-tags">
-                        <span class="tag">Access Point</span>
-                        <span class="tag">Hotspot</span>
-                        <span class="tag">Bandwidth</span>
-                    </div>
                 </div>
 
                 <!-- Card 7 -->
@@ -795,11 +684,6 @@
                     </div>
                     <h3>Cloud Computing</h3>
                     <p>Konsep komputasi awan, virtualisasi (Proxmox/VMware), pemahaman IaaS, PaaS, SaaS, serta pengelolaan infrastruktur Cloud modern.</p>
-                    <div class="card-tags">
-                        <span class="tag">Proxmox</span>
-                        <span class="tag">VMware</span>
-                        <span class="tag">Virtualization</span>
-                    </div>
                 </div>
 
                 <!-- Card 8 -->
@@ -809,11 +693,6 @@
                     </div>
                     <h3>Teknologi VoIP</h3>
                     <p>Pembangunan sistem komunikasi suara berbasis IP, konfigurasi Server PBX (Asterisk/Elastix), Softphone, dan IP Phone.</p>
-                    <div class="card-tags">
-                        <span class="tag">Asterisk</span>
-                        <span class="tag">SIP Server</span>
-                        <span class="tag">Zoiper</span>
-                    </div>
                 </div>
 
                 <!-- Card 9 -->
@@ -823,11 +702,6 @@
                     </div>
                     <h3>Monitoring & Manajemen</h3>
                     <p>Pengawasan performa trafik jaringan dan server menggunakan tools monitoring seperti Zabbix, Cacti, Wireshark, dan Dude.</p>
-                    <div class="card-tags">
-                        <span class="tag">Zabbix</span>
-                        <span class="tag">Cacti</span>
-                        <span class="tag">The Dude</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -861,80 +735,6 @@
                     <span class="step-number">TAHAP 04</span>
                     <h3>Keamanan & Server Lanjut</h3>
                     <p>Penerapan Firewall, VPN, Virtualisasi Server, Layanan Cloud, dan hardening keamanan infrastruktur.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- [FITUR BARU 1] MODUL STUDI KASUS & PRAKTIKUM NYATA -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Studi Kasus & Praktikum Nyata</h2>
-                <p class="section-subtitle">Contoh implementasi proyek riil yang biasa dikerjakan siswa TJKT di lab maupun industri.</p>
-            </div>
-
-            <div class="card-grid">
-                <div class="project-card">
-                    <span class="project-badge">Praktikum #1</span>
-                    <h3>Setup System Hotspot Voucher School</h3>
-                    <p>Merancang jaringan Wi-Fi sekolah menggunakan Router MikroTik, pembagian VLAN untuk guru dan siswa, serta integrasi sistem billing voucher.</p>
-                    <div class="card-tags">
-                        <span class="tag">MikroTik Router</span>
-                        <span class="tag">UserMan</span>
-                        <span class="tag">VLAN</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <span class="project-badge">Praktikum #2</span>
-                    <h3>Deployment Linux Web Server Lokal</h3>
-                    <p>Instalasi Debian Server pada mesin virtual Proxmox, konfigurasi IP Static, DNS Server (BIND9), dan deployment Web Server Nginx.</p>
-                    <div class="card-tags">
-                        <span class="tag">Debian</span>
-                        <span class="tag">BIND9</span>
-                        <span class="tag">Nginx</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <span class="project-badge">Praktikum #3</span>
-                    <h3>Splicing Kabel Fiber Optic (FTTH)</h3>
-                    <p>Praktik kupas kabel drop core, penyambungan inti kaca menggunakan Fusion Splicer, dan pengujian redaman sinyal menggunakan OPM.</p>
-                    <div class="card-tags">
-                        <span class="tag">Splicer</span>
-                        <span class="tag">OPM</span>
-                        <span class="tag">Drop Core</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- [FITUR BARU 2] GLOSARIUM / DIKSIONARI TJKT -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Glosarium Istilah TJKT</h2>
-                <p class="section-subtitle">Kamus ringkas istilah-istilah penting yang sering ditemui di dunia jaringan.</p>
-            </div>
-
-            <div class="glossary-grid">
-                <div class="glossary-item">
-                    <h4>IP Address</h4>
-                    <p>Alamat numerik unik yang diidentifikasikan ke setiap perangkat dalam jaringan komputer.</p>
-                </div>
-                <div class="glossary-item">
-                    <h4>Subnetting</h4>
-                    <p>Teknik membagi satu jaringan fisik besar menjadi beberapa sub-jaringan yang lebih kecil (Subnet).</p>
-                </div>
-                <div class="glossary-item">
-                    <h4>Bandwidth</h4>
-                    <p>Kapasitas maksimum jalur komunikasi untuk mentransfer data dalam hitungan detik (bps).</p>
-                </div>
-                <div class="glossary-item">
-                    <h4>Firewall</h4>
-                    <p>Sistem keamanan yang memantau dan mengontrol lalu lintas jaringan masuk dan keluar berdasarkan aturan keamanan.</p>
                 </div>
             </div>
         </div>
